@@ -4,7 +4,7 @@ import Footer from './components/footer';
 import Home from './pages/home';
 import Login from './pages/login';
 import Panier from './pages/panier';
-import Shopping from './pages/shopping';
+import Vol from './pages/vol';
 import Pay from './pages/pay';
 import Faq from './pages/faq';
 

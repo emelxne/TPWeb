@@ -101,23 +101,12 @@
   .nav__ul a {
     color: #999;
   }
-  
-  .nav__ul--extra {
-    column-count: 2;
-    column-gap: 1.25em;
-  }
-  
   .legal {
     display: flex;
     flex-wrap: wrap;
     color: #999;
   }
     
-  .legal__links {
-    display: flex;
-    align-items: center;
-  }
-  
   .heart {
     color: #2f2f2f;
   }
@@ -132,11 +121,7 @@
     .footer__nav > * {
       flex: 1;
     }
-    
-    .nav__item--extra {
-      flex-grow: 2;
-    }
-    
+        
     .footer__addr {
       flex: 1 0px;
     }
