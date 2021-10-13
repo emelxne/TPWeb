@@ -7,19 +7,22 @@ import Panier from './pages/panier';
 import Vol from './pages/vol';
 import Pay from './pages/pay';
 import Faq from './pages/faq';
-
-
+//import { AuthProvider } from './contexts/AuthContext';
 import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 
 function App() {
   return (
-    <Router>
+
+<Router>
       <Appli>
         <Header/>
         <Switch>
+          
           <Route path="/login" component={Login}>
             <Login />
           </Route>
+    
+          
           <Route path="/home" component={Home}>
             <Home />
           </Route>
@@ -27,6 +30,8 @@ function App() {
         <Footer/> 
       </Appli>
     </Router>
+      
+    
   );
 }
 

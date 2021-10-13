@@ -1,11 +1,23 @@
 import { Form, Button, Card } from 'react-bootstrap'
 import React, { useRef } from 'react'
+//import { useAuth } from "../contexts/AuthContext"
+//import { Link, useHistory } from "react-router-dom"
 
 export default function Signup(){
 
     const emailRef=useRef()
     const mdpRef=useRef()
     const mdpCheckRef=useRef()
+   /* const { signup } = useAuth()
+
+    async function handleSubmit(e) {
+        e.preventDefault()
+    
+        signup(emailRef.current.value, mdpRef.current.value)
+      }
+*/
+//on importe un évènement 
+
 
     return(
         <>
