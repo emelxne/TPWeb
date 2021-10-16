@@ -3,13 +3,10 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Home from './pages/home';
 import Login from './pages/login';
-import Panier from './pages/panier';
 import Vol from './pages/vol';
-import Pay from './pages/pay';
-import Faq from './pages/faq';
 
 
-import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 
 function App() {
   return (
@@ -22,6 +19,9 @@ function App() {
           </Route>
           <Route path="/home" component={Home}>
             <Home />
+          </Route>
+          <Route path="/vol" component={Vol}>
+            <Vol/>
           </Route>
         </Switch>
         <Footer/> 
