@@ -14,15 +14,9 @@ function App() {
       <Appli>
         <Header/>
         <Switch>
-          <Route path="/login" component={Login}>
-            <Login />
-          </Route>
-          <Route path="/home" component={Home}>
-            <Home />
-          </Route>
-          <Route path="/vol" component={Vol}>
-            <Vol/>
-          </Route>
+          <Route path="/login" component={Login}/>
+          <Route path="/home" component={Home}/>
+          <Route path="/vol" component={Vol}/>
         </Switch>
         <Footer/> 
       </Appli>
