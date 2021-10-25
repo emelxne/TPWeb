@@ -1,8 +1,8 @@
-import firebase from 'firebase/compat/app'
-import 'firebase/auth'
+import { initializeApp } from "firebase/app";
+import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
 
 
-const app = firebase.initializeApp({
+const app = initializeApp({
     apiKey: process.env.REACT_FIREBASE_API_KEY,
     authDomain: process.env.REACT_FIREBASE_AUTH_DOMAIN,
     projectId: process.env.REACT_FIREBASE_PROJECTID,
@@ -12,5 +12,5 @@ const app = firebase.initializeApp({
     measurementId: process.env.REACT_FIREBASE_MEASUREMENT_ID
 })
 
-export const auth = app.auth
+export const auth = getAuth(app)
 export default app

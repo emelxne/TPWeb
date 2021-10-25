@@ -13,7 +13,7 @@ export function AuthProvider({ children }){
 
     const[currentUser, setCurrentUser]=useState()
     function signup(email, mdp){
-        return auth.createUserWithEmailAndPassword(email, mdp)
+        return auth().createUserWithEmailAndPassword(email, mdp)
     }
 // permet de vérifier l'état de l'utilisateur
     useEffect(()=>{

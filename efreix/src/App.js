@@ -7,7 +7,7 @@ import Panier from './pages/panier';
 import Vol from './pages/vol';
 import Pay from './pages/pay';
 import Faq from './pages/faq';
-//import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
 import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 
 function App() {
@@ -17,12 +17,11 @@ function App() {
       <Appli>
         <Header/>
         <Switch>
-          
+          <AuthProvider>
           <Route path="/login" component={Login}>
             <Login />
           </Route>
-    
-          
+          </AuthProvider>
           <Route path="/home" component={Home}>
             <Home />
           </Route>
