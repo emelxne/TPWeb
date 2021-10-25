@@ -1,67 +1,78 @@
-import React from 'react'
+import { Form, Button, Card, Alert } from 'react-bootstrap'
+import React, { useRef } from 'react'
+import { useAuth } from "../contexts/AuthContext"
+import { Link, useHistory } from "react-router-dom"
+import { useState } from 'react'
 
-function login() {
-    return (
-        <div>
-            <p class="tip">Click on button in image container</p>
-            <div class="cont">
-                <div class="form sign-in">
-                    <h2>Welcome back,</h2>
-                    <label>
-                    <span>Email</span>
-                    <input type="email" />
-                    </label>
-                    <label>
-                    <span>Password</span>
-                    <input type="password" />
-                    </label>
-                    <p class="forgot-pass">Forgot password?</p>
-                    <button type="button" class="submit">Sign In</button>
-                    <button type="button" class="fb-btn">Connect with <span>facebook</span></button>
-                </div>
-                <div class="sub-cont">
-                    <div class="img">
-                    <div class="img__text m--up">
-                        <h2>New here?</h2>
-                        <p>Sign up and discover great amount of new opportunities!</p>
-                    </div>
-                    <div class="img__text m--in">
-                        <h2>One of us?</h2>
-                        <p>If you already has an account, just sign in. We've missed you!</p>
-                    </div>
-                    <div class="img__btn">
-                        <span class="m--up">Sign Up</span>
-                        <span class="m--in">Sign In</span>
-                    </div>
-                    </div>
-                    <div class="form sign-up">
-                    <h2>Time to feel like home,</h2>
-                    <label>
-                        <span>Name</span>
-                        <input type="text" />
-                    </label>
-                    <label>
-                        <span>Email</span>
-                        <input type="email" />
-                    </label>
-                    <label>
-                        <span>Password</span>
-                        <input type="password" />
-                    </label>
-                    <button type="button" class="submit">Sign Up</button>
-                    <button type="button" class="fb-btn">Join with <span>facebook</span></button>
-                    </div>
-                </div>
+export default function Signup(){
+
+    const emailRef=useRef()
+    const mdpRef=useRef()
+    const mdpCheckRef=useRef()
+    const { signup } = useAuth()
+    const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
+
+    // on vérifie que les mdp sont égaux, sinon erreur
+    async function handleSubmit(e) {
+        e.preventDefault()
+
+        if (mdpRef.current.value !== mdpCheckRef.current.value){
+            return setError("Les mots de passe sont différents")
+        }
+        try {
+            setError ("")
+            setLoading(true)
+            await signup(emailRef.current.value, mdpRef.current.value)
+        } catch {
+            setError("création de compte impossible")
+        }
+        setLoading(false)
+      }
+
+//on importe un évènement 
+
+
+    return(
+        <>
+            <Card>
+                <Card.Body>
+                    <h2 className="text-center mb_4"> Sign Up</h2>
+                    {error && <Alert variant = "danger">{error} </Alert>}
+                    <Form onSubmit = {handleSubmit}>
+                        <Form.Group id="email">
+                            <Form.Label>
+                                Email
+                            </Form.Label>
+                            <Form.Control type="email" ref ={emailRef} required>
+                            </Form.Control>
+                        </Form.Group>
+                        <Form.Group id="mdp">
+                            <Form.Label>
+                                Mot de passe
+                            </Form.Label>
+                            <Form.Control type="mdp" ref ={mdpRef} required>
+                            </Form.Control>
+                        </Form.Group>
+                        <Form.Group id="confirmation">
+                            <Form.Label>
+                                Confirmation du mot de passe
+                            </Form.Label>
+                            <Form.Control type="mdp" ref ={mdpCheckRef} required>
+                            </Form.Control>
+                        </Form.Group>
+                        <Button className="w-100 mt-4 mb-4" type="inscrire">
+                            S'inscrire
+                        </Button>
+                        <Button disabled={loading} className="w-100" type="connecter">
+                            Se Connecter
+                        </Button>
+                    </Form>
+                </Card.Body>
+            </Card>
+            <div className="w-100 text-center mt-2">
+                Vous avez déjà un compte ? Log In
             </div>
-
-            <a href="https://dribbble.com/shots/3306190-Login-Registration-form" target="_blank" class="icon-link">
-                <img src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/256/Dribbble-icon.png"/>
-            </a>
-            <a href="https://twitter.com/NikolayTalanov" target="_blank" class="icon-link icon-link--twitter">
-                <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png"/>
-            </a>
-        </div>
+        </>
     )
 }
-
-export default login

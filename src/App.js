@@ -4,17 +4,19 @@ import Footer from './components/footer';
 import Home from './pages/home';
 import Login from './pages/login';
 import Vol from './pages/vol';
-
-
-import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
+import { AuthProvider } from './contexts/AuthContext';
+import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 
 function App() {
   return (
-    <Router>
+
+<Router>
       <Appli>
         <Header/>
         <Switch>
+          <AuthProvider>
           <Route path="/login" component={Login}/>
+          </AuthProvider>
           <Route path="/home" component={Home}/>
           <Route path="/vol" component={Vol}/>
         </Switch>
