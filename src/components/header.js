@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 function header() {
     return (
         <div>
-           <nav className="navbar">
+           <nav className="navbar" >
                 <div className="content">
                     <div className="logo">
                         <Link to="/home">Efreix</Link>
