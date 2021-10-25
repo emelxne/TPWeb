@@ -1,7 +1,8 @@
-import { Form, Button, Card } from 'react-bootstrap'
+import { Form, Button, Card, Alert } from 'react-bootstrap'
 import React, { useRef } from 'react'
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import { useState } from 'react'
 
 export default function Signup(){
 
@@ -9,11 +10,24 @@ export default function Signup(){
     const mdpRef=useRef()
     const mdpCheckRef=useRef()
     const { signup } = useAuth()
+    const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
 
+    // on vérifie que les mdp sont égaux, sinon erreur
     async function handleSubmit(e) {
         e.preventDefault()
-    
-        signup(emailRef.current.value, mdpRef.current.value)
+
+        if (mdpRef.current.value !== mdpCheckRef.current.value){
+            return setError("Les mots de passe sont différents")
+        }
+        try {
+            setError ("")
+            setLoading(true)
+            await signup(emailRef.current.value, mdpRef.current.value)
+        } catch {
+            setError("création de compte impossible")
+        }
+        setLoading(false)
       }
 
 //on importe un évènement 
@@ -24,7 +38,8 @@ export default function Signup(){
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb_4"> Sign Up</h2>
-                    <Form>
+                    {error && <Alert variant = "danger">{error} </Alert>}
+                    <Form onSubmit = {handleSubmit}>
                         <Form.Group id="email">
                             <Form.Label>
                                 Email
@@ -49,7 +64,7 @@ export default function Signup(){
                         <Button className="w-100 mt-4 mb-4" type="inscrire">
                             S'inscrire
                         </Button>
-                        <Button className="w-100" type="connecter">
+                        <Button disabled={loading} className="w-100" type="connecter">
                             Se Connecter
                         </Button>
                     </Form>
