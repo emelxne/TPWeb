@@ -32,7 +32,6 @@ export default function Signup(){
 
 //on importe un évènement 
 
-
     return(
         <>
             <Card>
