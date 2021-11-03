@@ -4,12 +4,12 @@ import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
 
 const app = initializeApp({
     apiKey: "AIzaSyBXoGMJ-goiAR7b_coTG8yIOdVy-ISfTZA",
-    authDomain: process.env.REACT_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.REACT_FIREBASE_PROJECTID,
-    storageBucket: process.env.REACT_FIREBASE_STORAGEBUCKET,
-    messagingSenderId: process.env.REACT_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.REACT_FIREBASE_APPID,
-    measurementId: process.env.REACT_FIREBASE_MEASUREMENT_ID
+    authDomain: "projetweb-c2b97.firebaseapp.com",
+    projectId: "projetweb-c2b97",
+    storageBucket: "projetweb-c2b97.appspot.com",
+    messagingSenderId: "330155578176",
+    appId: "1:330155578176:web:a34ce78a9278dd4c34e0a5",
+    measurementId: "G-39L1GNWPZ3"
 })
 
 export const auth = getAuth(app)

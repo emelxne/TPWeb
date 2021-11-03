@@ -1,44 +1,38 @@
-import { Form, Button, Card, Alert } from 'react-bootstrap'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from "react"
+import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
-import { useState } from 'react'
 
-export default function Signup(){
+export default function Login() {
+  const emailRef = useRef()
+  const mdpRef = useRef()
+  const { login } = useAuth()
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+  const history = useHistory()
 
-    const emailRef=useRef()
-    const mdpRef=useRef()
-    const mdpCheckRef=useRef()
-    const { signup } = useAuth()
-    const [error, setError] = useState("")
-    const [loading, setLoading] = useState(false)
+  async function handleSubmit(e) {
+    e.preventDefault()
 
-    // on vérifie que les mdp sont égaux, sinon erreur
-    async function handleSubmit(e) {
-        e.preventDefault()
+    try {
+      setError("")
+      setLoading(true)
+      await login(emailRef.current.value, mdpRef.current.value)
+      history.push("/")
+    } catch {
+      setError("Failed to log in")
+    }
 
-        if (mdpRef.current.value !== mdpCheckRef.current.value){
-            return setError("Les mots de passe sont différents")
-        }
-        try {
-            setError ("")
-            setLoading(true)
-            await signup(emailRef.current.value, mdpRef.current.value)
-        } catch {
-            setError("création de compte impossible")
-        }
-        setLoading(false)
-      }
+    setLoading(false)
+  }
 
-//on importe un évènement 
-
-    return(
-        <>
-            <Card>
-                <Card.Body>
-                    <h2 className="text-center mb_4"> Sign Up</h2>
-                    {error && <Alert variant = "danger">{error} </Alert>}
-                    <Form onSubmit = {handleSubmit}>
+  return (
+    <>
+      <Card>
+        <Card.Body>
+          <h2 className="text-center mb-4">Log In</h2>
+          {error && <Alert variant="danger">{error}</Alert>}
+          <Form onSubmit = {handleSubmit}>
                         <Form.Group id="email">
                             <Form.Label>
                                 Email
@@ -53,25 +47,18 @@ export default function Signup(){
                             <Form.Control type="mdp" ref ={mdpRef} required>
                             </Form.Control>
                         </Form.Group>
-                        <Form.Group id="confirmation">
-                            <Form.Label>
-                                Confirmation du mot de passe
-                            </Form.Label>
-                            <Form.Control type="mdp" ref ={mdpCheckRef} required>
-                            </Form.Control>
-                        </Form.Group>
-                        <Button className="w-100 mt-4 mb-4" type="inscrire">
-                            S'inscrire
-                        </Button>
                         <Button disabled={loading} className="w-100" type="connecter">
                             Se Connecter
                         </Button>
                     </Form>
-                </Card.Body>
-            </Card>
-            <div className="w-100 text-center mt-2">
-                Vous avez déjà un compte ? Log In
-            </div>
-        </>
-    )
+          <div className="w-100 text-center mt-3">
+            <Link to="/forgot-password">Mot de passe oublié</Link>
+          </div>
+        </Card.Body>
+      </Card>
+      <div className="w-100 text-center mt-2">
+        Pas encore inscrit ? <Link to="/signup">S'inscrire</Link>
+      </div>
+    </>
+  )
 }

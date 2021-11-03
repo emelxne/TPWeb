@@ -17,8 +17,8 @@ function header() {
                         <li><Link to="/vol">Vol</Link></li>
                     </ul>
                     <ul className="menu-list">
-                        <li><Link to="/login">Sign in</Link></li>
-                        <li><Link to="/login">Sign up</Link></li>
+                        <li><Link to="/login">Log in</Link></li>
+                        <li><Link to="/signup">Sign up</Link></li>
                     </ul>
                 </div>
             </nav>
