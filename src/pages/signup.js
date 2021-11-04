@@ -16,7 +16,7 @@ export default function Signup() {
     e.preventDefault()
 
     if (mdpRef.current.value !== mdpConfirmRef.current.value) {
-      return setError("Passwords do not match")
+      return setError("Les mots de passe sont différents")
     }
 
     try {
@@ -25,7 +25,7 @@ export default function Signup() {
       await signup(emailRef.current.value, mdpRef.current.value)
       history.push("/")
     } catch {
-      setError("Failed to create an account")
+      setError("Impossible de créer un compte")
     }
 
     setLoading(false)
@@ -43,21 +43,21 @@ export default function Signup() {
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
             <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Mot de passe</Form.Label>
               <Form.Control type="password" ref={mdpRef} required />
             </Form.Group>
             <Form.Group id="password-confirm">
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control type="password" ref={mdpConfirmRef} required />
+              <Form.Label>Confirmation du mot de passe</Form.Label>
+              <Form.Control className="mb-4" type="password" ref={mdpConfirmRef} required />
             </Form.Group>
             <Button disabled={loading} className="w-100" type="submit">
-              Sign Up
+              S'inscrire
             </Button>
           </Form>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        Already have an account? <Link to="/login">Log In</Link>
+        Vous avez déjà un compte ? <Link to="/login">Se connecter</Link>
       </div>
     </>
   )

@@ -20,7 +20,7 @@ export default function Login() {
       await login(emailRef.current.value, mdpRef.current.value)
       history.push("/")
     } catch {
-      setError("Failed to log in")
+      setError("Impossible de se connecter")
     }
 
     setLoading(false)
@@ -44,7 +44,7 @@ export default function Login() {
                             <Form.Label>
                                 Mot de passe
                             </Form.Label>
-                            <Form.Control type="mdp" ref ={mdpRef} required>
+                            <Form.Control className="mb-4" type="mdp" ref ={mdpRef} required>
                             </Form.Control>
                         </Form.Group>
                         <Button disabled={loading} className="w-100" type="connecter">

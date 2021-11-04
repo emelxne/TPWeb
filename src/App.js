@@ -4,6 +4,10 @@ import Footer from './components/footer';
 import Home from './pages/home';
 import Login from './pages/login';
 import Signup from './pages/signup';
+import Dashboard from "./pages/Dashboard"
+import PrivateRoute from "./pages/PrivateRoute"
+import ForgotPassword from "./pages/ForgotPassword"
+import UpdateProfile from "./pages/UpdateProfile"
 import Vol from './pages/vol';
 import { AuthProvider } from './contexts/AuthContext';
 import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
@@ -16,8 +20,12 @@ function App() {
         <Header/>
         <Switch>
           <AuthProvider>
-          <Route path="/login" component={Login}/>
-          <Route path="/signup" component={Signup} />
+          <PrivateRoute exact path="/" component={Dashboard} />
+              <PrivateRoute path="/update-profile" component={UpdateProfile} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/login" component={Login} />
+              <Route path ="/dashboard" component={Dashboard}/>
+              <Route path="/forgot-password" component={ForgotPassword} />
           </AuthProvider>
           <Route path="/home" component={Home}/>
           <Route path="/vol" component={Vol}/>

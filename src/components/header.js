@@ -19,6 +19,7 @@ function header() {
                     <ul className="menu-list">
                         <li><Link to="/login">Log in</Link></li>
                         <li><Link to="/signup">Sign up</Link></li>
+                        <li><Link to="/Dashboard">Profil</Link></li>
                     </ul>
                 </div>
             </nav>

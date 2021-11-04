@@ -1,16 +1,15 @@
-import { initializeApp } from "firebase/app";
-import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
+import firebase from "firebase/compat/app"
+import "firebase/compat/auth"
 
-
-const app = initializeApp({
-    apiKey: "AIzaSyBXoGMJ-goiAR7b_coTG8yIOdVy-ISfTZA",
-    authDomain: "projetweb-c2b97.firebaseapp.com",
-    projectId: "projetweb-c2b97",
-    storageBucket: "projetweb-c2b97.appspot.com",
-    messagingSenderId: "330155578176",
-    appId: "1:330155578176:web:a34ce78a9278dd4c34e0a5",
-    measurementId: "G-39L1GNWPZ3"
+const app = firebase.initializeApp({
+  apiKey: "AIzaSyBXoGMJ-goiAR7b_coTG8yIOdVy-ISfTZA",
+  authDomain: "projetweb-c2b97.firebaseapp.com",
+  databaseURL: "projetweb-c2b97.firebaseapp.com",
+  projectId: "projetweb-c2b97.appspot.com",
+  storageBucket: "330155578176",
+  messagingSenderId: "1:330155578176:web:a34ce78a9278dd4c34e0a5",
+  appId: "G-39L1GNWPZ3"
 })
 
-export const auth = getAuth(app)
+export const auth = app.auth()
 export default app
