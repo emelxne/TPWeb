@@ -12,9 +12,9 @@ function header() {
                         <Link to="/home">Efreix</Link>
                     </div>
                     <ul className="menu-list">
-                        
                         <li><Link to="/home">Home</Link></li>
                         <li><Link to="/vol">Vol</Link></li>
+                        <li><Link to="/alaune">A la une</Link></li>
                     </ul>
                     <ul className="menu-list">
                         <li><Link to="/login">Log in</Link></li>

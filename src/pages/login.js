@@ -32,25 +32,25 @@ export default function Login() {
         <Card.Body>
           <h2 className="text-center mb-4">Log In</h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit = {handleSubmit}>
-                        <Form.Group id="email">
-                            <Form.Label>
-                                Email
-                            </Form.Label>
-                            <Form.Control type="email" ref ={emailRef} required>
-                            </Form.Control>
-                        </Form.Group>
-                        <Form.Group id="mdp">
-                            <Form.Label>
-                                Mot de passe
-                            </Form.Label>
-                            <Form.Control className="mb-4" type="mdp" ref ={mdpRef} required>
-                            </Form.Control>
-                        </Form.Group>
-                        <Button disabled={loading} className="w-100" type="connecter">
-                            Se Connecter
-                        </Button>
-                    </Form>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group id="email">
+              <Form.Label>
+                Email
+              </Form.Label>
+              <Form.Control type="email" ref={emailRef} required>
+              </Form.Control>
+            </Form.Group>
+            <Form.Group id="mdp">
+              <Form.Label>
+                Mot de passe
+              </Form.Label>
+              <Form.Control className="mb-4" type="mdp" ref={mdpRef} required>
+              </Form.Control>
+            </Form.Group>
+            <Button disabled={loading} className="w-100" type="connecter">
+              Se Connecter
+            </Button>
+          </Form>
           <div className="w-100 text-center mt-3">
             <Link to="/forgot-password">Mot de passe oublié</Link>
           </div>
