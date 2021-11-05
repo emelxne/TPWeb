@@ -29,7 +29,7 @@ function Home() {
         <div>
             <Destinations>
                 <h1>Efreix</h1>
-                <h3>" tête en l'air ✈ "</h3>
+                <h3>" Ça vole pas haut ✈ "</h3>
                 <div className="search-form">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Formgroup>

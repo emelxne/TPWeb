@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components';
 import Header from './components/header';
 import Footer from './components/footer';
 import Home from './pages/home';
@@ -18,8 +17,7 @@ function App() {
   return (
 
     <Router>
-      <Appli>
-        <Header />
+      <Header />
         <Switch>
           <AuthProvider>
             <PrivateRoute exact path="/" component={Dashboard} />
@@ -34,13 +32,8 @@ function App() {
           </AuthProvider>
         </Switch>
         <Footer />
-      </Appli>
-    </Router>
+      </Router>
   );
 }
 
 export default App;
-
-const Appli = styled.div`
-  //background-color: blue;
-`
