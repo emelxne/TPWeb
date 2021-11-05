@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import Hereapihome from '../Api/hereapi';
 
 function Home() {
-    useEffect(() => {
-        fetchItems();
-    }, []);
     const [depart, setDepart] = useState();
     const [items, setItems] = useState();
     const [adult, setAdult] = useState(1);
@@ -26,14 +24,6 @@ function Home() {
     const onSubmit = data => {
         console.log(data)
         setDepart(data.depart)
-    }
-    // initialiser à null 
-    const fetchItems = async () => {
-        const data = await fetch(`https://transit.router.hereapi.com/v8/routes?apiKey=pLZT2rwUsCpXPdLgqbzN6Vz4e_ZOVuNebLlfsm0mqM8&origin=49.013992,2.54176&destination=50.0379,8.5621&maxPerTransport=1&departure=${depart}`);
-        //https://transit.router.hereapi.com/v8/routes?apiKey=pLZT2rwUsCpXPdLgqbzN6Vz4e_ZOVuNebLlfsm0mqM8&origin=41.79457,12.25473&destination=41.90096,12.50243  'https://transit.router.hereapi.com/v8/routes?apiKey=pLZT2rwUsCpXPdLgqbzN6Vz4e_ZOVuNebLlfsm0mqM8&origin=41.79457,12.25473&destination=48.8534,2.3488&maxPerTransport=1'
-        const items = await data.json();
-        console.log(items)
-        setItems(items)
     }
     return (
         <div>
@@ -133,19 +123,9 @@ function Home() {
                                 <button type="submit" value="Lancer la recherche" name="recherche" id="recherche"> lancer la recherche </button>
                             </Boutton>
                         </div>
-
                     </form>
                 </div>
-                <p>
-                    {items && items.routes[0].id}
-                </p>
-                <p>
-                    {items && items.routes[0].sections[0].id}
-                    {items && items.routes[0].sections[1].id}
-                </p>
-                <p>
-                    {items && items.routes[0].sections[0].type}
-                </p>
+                <Hereapihome />
             </Destinations>
         </div>
     )
