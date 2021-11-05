@@ -28,10 +28,10 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/forgot-password" component={ForgotPassword} />
-          </AuthProvider>
-          <Route path="/alaune" component={Alaune} />
+            <Route path="/alaune" component={Alaune} />
           <Route path="/home" component={Home} />
           <Route path="/vol" component={Vol} />
+          </AuthProvider>
         </Switch>
         <Footer />
       </Appli>

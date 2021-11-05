@@ -133,7 +133,6 @@ function Vol() {
                 <div className="alaune">
                     <p> depart de à {items && items.routes[0].sections[0].departure.time} pour une arrivee à {items && items.routes[0].sections[items.routes[0].sections.length - 1].arrival.time}</p>
                     <p> mode de transport : {items && items.routes[0].sections[0].type}, {items && items.routes[0].sections[1].transport.mode}, {items && items.routes[0].sections[items.routes[0].sections.length - 1].transport.mode}</p>
-
                 </div>
             </Destinations>
 
